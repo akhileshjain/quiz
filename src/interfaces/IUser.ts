@@ -1,8 +1,12 @@
 export interface IUser {
     _id: string;
-    name: string;
-    email: string;
+    username: string;
     password: string;
+    phone:string,
+    email: string;
+    isRegistered: boolean;
+    type: number;
+    role: string
   }
   
   export interface IUserInputDTO {

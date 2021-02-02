@@ -11,13 +11,16 @@ const route = Router();
 export default (app: Router) => {
   app.use('/auth', route);
 
-  route.post(
-    '/signup',
+  route.post('/signup',
     celebrate({
       body: Joi.object({
-        name: Joi.string().required(),
+        username: Joi.string().required(),
         email: Joi.string().required(),
         password: Joi.string().required(),
+        phone: Joi.number(),
+        type: Joi.number().default(2),
+        isRegistered: Joi.boolean().default(false),
+        role: Joi.string().default('600045071dbbafd62cdd6045')
       }),
     }),
     async (req: Request, res: Response, next: NextFunction) => {

@@ -3,29 +3,33 @@ import mongoose from 'mongoose';
 
 const User = new mongoose.Schema(
   {
-    name: {
+    username: {
       type: String,
       required: [true, 'Please enter a full name'],
       index: true,
     },
-
+    password: String,
+    salt: String,
+    phone: {
+     type: String
+    },
     email: {
       type: String,
       lowercase: true,
       unique: true,
       index: true,
     },
-
-    password: String,
-
-    salt: String,
-
-    role: {
-      type: String,
-      default: 'user',
+    isRegistered: {
+      type: Boolean
     },
+    role: {
+      type: mongoose.Schema.Types.ObjectId
+    },
+    type: {
+      type: Number
+    }
   },
-  { timestamps: true },
+  { timestamps: {createdAt: 'createDate'} },
 );
 
 export default mongoose.model<IUser & mongoose.Document>('User', User);
