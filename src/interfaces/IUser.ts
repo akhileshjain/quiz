@@ -1,8 +1,8 @@
-export interface IUser {
+export interface IUser{
     _id: string;
     username: string;
     password: string;
-    phone:string,
+    phone:string;
     email: string;
     isRegistered: boolean;
     type: number;
